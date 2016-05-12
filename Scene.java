@@ -1,4 +1,3 @@
-
 import java.io.*;
 import algebra.*;
 
@@ -10,7 +9,7 @@ import algebra.*;
  */
 
 public class Scene {
-    
+
     private static String nextLine (BufferedReader in) throws Exception  {
         String r = in.readLine();
 
@@ -41,21 +40,21 @@ public class Scene {
         String r = nextLine(in);
         String [] sar = r.split("\\s+");
         cameraPosition.set (new Double(sar[0]).doubleValue(),
-                            new Double(sar[1]).doubleValue(),
-                            new Double(sar[2]).doubleValue());
+                new Double(sar[1]).doubleValue(),
+                new Double(sar[2]).doubleValue());
 
         r = nextLine(in);
         sar = r.split("\\s+");
         cameraLookAt.set (new Double(sar[0]).doubleValue(),
-                          new Double(sar[1]).doubleValue(),
-                          new Double(sar[2]).doubleValue());
-                        
+                new Double(sar[1]).doubleValue(),
+                new Double(sar[2]).doubleValue());
+
         r = nextLine(in);
         sar = r.split("\\s+");
         cameraUp.set (new Double(sar[0]).doubleValue(),
-                      new Double(sar[1]).doubleValue(),
-                      new Double(sar[2]).doubleValue());
-                        
+                new Double(sar[1]).doubleValue(),
+                new Double(sar[2]).doubleValue());
+
         r = nextLine(in);
         cameraFocal = new Double(r).doubleValue();
 
@@ -63,17 +62,17 @@ public class Scene {
         sar = r.split("\\s+");
         screenW = new Integer(sar[0]).intValue();
         screenH = new Integer(sar[1]).intValue();
- 
+
         r = nextLine(in);
         ambientI = new Double(r).doubleValue();
 
         r = nextLine(in);
         sar = r.split ("\\s+");
         for (int i = 0; i < sourceCoord.length; i++) {
-    	    sourceCoord[i] = new Double(sar[i]).doubleValue();	
+            sourceCoord[i] = new Double(sar[i]).doubleValue();	
         }
         sourceI = new Double(sar[3]).doubleValue();
- 
+
         r = nextLine(in);
         sar = r.split ("\\s+");
         for (int i = 0; i < material.length; i++) {

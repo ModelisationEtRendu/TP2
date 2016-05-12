@@ -11,7 +11,7 @@ import java.lang.Math.*;
  * @author morin, chambon, cdehais
  */
 public class Rasterizer {
-    
+
     Shader shader;
 
     public Rasterizer (Shader shader) {
@@ -68,24 +68,24 @@ public class Rasterizer {
         int x2 = v2.getX ();
         int y2 = v2.getY ();
 
-	/* For now : just display the vertices*/
-	Fragment f = new Fragment (0,0);
-	int size = 2;
+        /* For now : just display the vertices*/
+        Fragment f = new Fragment (0,0);
+        int size = 2;
         for (int i = 0; i < v1.getNumAttributes (); i++) {
             f.setAttribute (i, v1.getAttribute (i));
-		}
-	for (int i = -size; i <= size ; i++) {
-		for (int j = -size; j <= size; j++) {
-			f.setPosition(x1+i,y1+j);
-			shader.shade (f);
-			}
-		}
+        }
+        for (int i = -size; i <= size ; i++) {
+            for (int j = -size; j <= size; j++) {
+                f.setPosition(x1+i,y1+j);
+                shader.shade (f);
+            }
+        }
 
-  
-        /* tracé d'un segment avec l'algo de Bresenham 
-	int numAttributes = v1.getNumAttributes ();
+
+        /* tracé d'un segment avec l'algo de Bresenham */ 
+        int numAttributes = v1.getNumAttributes ();
         Fragment fragment = new Fragment (0, 0); //, numAttributes);
-        
+
         boolean sym = (Math.abs (y2 - y1) > Math.abs (x2 - x1));
         if (sym) {
             int temp;
@@ -99,52 +99,51 @@ public class Rasterizer {
             temp = y1; y1 = y2; y2 = temp; 
             ftemp = v1; v1 = v2; v2 = ftemp;
         }
-        
+
         int ystep;
         if (y1 < y2) {
             ystep =  1;
         } else {
             ystep = -1;
         }
-		
-		int x = x1;
-		float y_courant = y1;
-		int y=y1;
-		float delta_y = y2-y1;
-		float delta_x = x2-x1;
-		float m = delta_y/delta_x;	
-	
 
-		for (int i=1;i<=delta_x;i++) {
-			x = x+1; 
-			y_courant = y_courant + m;
-			if ((ystep == 1)&&(y_courant < y+0.5)||((ystep == -1) && (y_courant > y -0.5))) {
-				y = y;
-			} else {
-				y = y + ystep;
-			}	
+        int x = x1;
+        float y_courant = y1;
+        int y=y1;
+        float delta_y = y2-y1;
+        float delta_x = x2-x1;
+        float m = delta_y/delta_x;	
 
-	    //envoi du fragment au shader
+
+        for (int i=1;i<=delta_x;i++) {
+            x = x+1; 
+            y_courant = y_courant + m;
+            if ((ystep == 1)&&(y_courant < y+0.5)||((ystep == -1) && (y_courant > y -0.5))) {
+                y = y;
+            } else {
+                y = y + ystep;
+            }	
+
+            //envoi du fragment au shader
             fragment.setPosition (x, y);
-            
+
             if (!shader.isClipped (fragment)) {
 
-		//interpolation des attributs
+                //interpolation des attributs
                 interpolate2 (v1, v2, fragment);
                 if (sym) {
                     swapXAndY (fragment);
                 }
                 shader.shade (fragment);
             }
-		}
-*/
+        }
 
     }
 
     static double triangleArea (Fragment v1, Fragment v2, Fragment v3) {
         return (double) v2.getX () * v3.getY () - v2.getY () * v3.getX () 
-                      + v3.getX () * v1.getY () - v1.getX () * v3.getY ()
-                      + v1.getX () * v2.getY () - v2.getX () * v1.getY ();
+            + v3.getX () * v1.getY () - v1.getX () * v3.getY ()
+            + v1.getX () * v2.getY () - v2.getX () * v1.getY ();
     }
 
     static protected Matrix makeBarycentricCoordsMatrix (Fragment v1, Fragment v2, Fragment v3) {
@@ -183,8 +182,8 @@ public class Rasterizer {
         Matrix C = makeBarycentricCoordsMatrix (v1, v2, v3);
 
         /* iterate over the triangle's bounding box */
-        
-	/* à compléter */
+
+        /* à compléter */
 
     }  
 }

@@ -1,5 +1,3 @@
-
-
 import java.lang.Double;
 
 /**
@@ -59,7 +57,7 @@ public class DepthBuffer {
         }
     }
 
-    
+
 }
-	
-	
+
+

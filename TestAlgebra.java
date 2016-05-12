@@ -1,4 +1,3 @@
-
 import algebra.*;
 
 public class TestAlgebra {
@@ -13,12 +12,12 @@ public class TestAlgebra {
         try {
             Vector v0 = new Vector (0);
         } catch (Exception e) {
-             System.out.println ("Wrong size exception caught OK");
+            System.out.println ("Wrong size exception caught OK");
         }
         try {
             Vector v0 = new Vector ("named", 0);
         } catch (Exception e) {
-             System.out.println ("Wrong size exception caught OK");
+            System.out.println ("Wrong size exception caught OK");
         }
 
         System.out.println (v);
@@ -49,7 +48,7 @@ public class TestAlgebra {
         Vector3 r2 = new Vector3 ("u2", 1.0, 3.0, 0.0);
 
         Vector3 r = r1.cross (r2);
-        
+
         System.out.println (r1);
         System.out.println (r2);
         System.out.println ("r1.r2 = " + r1.dot (r2));
@@ -114,17 +113,17 @@ public class TestAlgebra {
         System.out.println (I);
         System.out.println ("submatrix:\n" + S);
 
-  }
-
-  public static void main(String[] args) {
-
-    try {
-      test() ;
-      System.out.println ("SUCCESS.") ;
-    } catch (Exception e) {
-      System.out.println ("FAIL: " + e) ;
-      e.printStackTrace () ;
     }
 
-  }
+    public static void main(String[] args) {
+
+        try {
+            test() ;
+            System.out.println ("SUCCESS.") ;
+        } catch (Exception e) {
+            System.out.println ("FAIL: " + e) ;
+            e.printStackTrace () ;
+        }
+
+    }
 }

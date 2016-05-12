@@ -1,21 +1,21 @@
-
-import algebra.*;
-
 /**
  * Test class for the Rasterizer class
  * @author: cdehais
  */ 
+
+import algebra.*;
+
 public class TestRasterizer {
-    
+
     static class TestShader extends Shader {
-        
+
         public TestShader (GraphicsWrapper screen) {
             super (screen);
         }
-        
+
         public void shade (Fragment fragment) {
             System.out.println ("  fragment: (" + fragment.getX () + ", " + fragment.getY () + ")"
-                                + " - color = (" + fragment.getColor() + ")");
+                    + " - color = (" + fragment.getColor() + ")");
         }
     }
 
@@ -33,7 +33,7 @@ public class TestRasterizer {
         v2.setColor (50, 100, 0);
 
         rasterizer.rasterizeEdge (v1, v2);
-   }
+    }
 
     public static void main (String[] args) {
         try {
@@ -42,6 +42,6 @@ public class TestRasterizer {
             System.out.println("EXCEPTION: " + e) ;
             e.printStackTrace() ;
         }
-  }
+    }
 
 }

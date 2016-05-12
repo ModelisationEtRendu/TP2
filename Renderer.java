@@ -1,4 +1,3 @@
-
 import algebra.*;
 
 /**
@@ -27,9 +26,9 @@ public class Renderer {
 
         xform = new Transformation ();
         xform.setLookAt (scene.getCameraPosition (),
-                         scene.getCameraLookAt (),
-                         scene.getCameraUp ());
-	xform.setProjection ();
+                scene.getCameraLookAt (),
+                scene.getCameraUp ());
+        xform.setProjection ();
         xform.setCalibration (scene.getCameraFocal (), scene.getScreenW (), scene.getScreenH ());
     }
 
@@ -41,17 +40,17 @@ public class Renderer {
         Fragment[] fragments = new Fragment[vertices.length];
 
         try {
-        for (int i = 0; i < vertices.length; i++) {
-            Vector pVertex = xform.projectPoint (vertices[i]);
-            Vector3 pNormal = normals[i];
+            for (int i = 0; i < vertices.length; i++) {
+                Vector pVertex = xform.projectPoint (vertices[i]);
+                Vector3 pNormal = normals[i];
 
-            int x = (int) Math.round (pVertex.get (0));
-            int y = (int) Math.round (pVertex.get (1));
-            fragments[i] = new Fragment (x, y);
-            fragments[i].setDepth (pVertex.get (2));
-            fragments[i].setNormal (pNormal);
-            fragments[i].setColor (colors[3*i], colors[3*i+1], colors[3*i+2]);
-        }
+                int x = (int) Math.round (pVertex.get (0));
+                int y = (int) Math.round (pVertex.get (1));
+                fragments[i] = new Fragment (x, y);
+                fragments[i].setDepth (pVertex.get (2));
+                fragments[i].setNormal (pNormal);
+                fragments[i].setColor (colors[3*i], colors[3*i+1], colors[3*i+2]);
+            }
         } catch (SizeMismatchException e) {
             e.printStackTrace ();
             /* should not reach */
@@ -123,6 +122,6 @@ public class Renderer {
         //wait (3);
 
         screen.destroy ();
-  	System.exit (0);
+        System.exit (0);
     }
 }

@@ -1,4 +1,3 @@
-	
 import java.io.* ;
 import algebra.*;
 
@@ -31,7 +30,7 @@ public class Mesh {
      */
     public Mesh (String filename) throws Exception {
         BufferedReader in = new BufferedReader (new FileReader (filename));
- 
+
         String r = nextLine (in);
         if (!r.equals ("OFF")) {
             throw new IOException ("Invalid OFF file !");
@@ -72,7 +71,7 @@ public class Mesh {
                 texCoords[2*i+1] = new Double(sar[7]).doubleValue();
             }
         }
-        
+
         /* Parse faces */
         for (int i = 0; i < faces_nb; i++) {
 
@@ -90,7 +89,7 @@ public class Mesh {
         }
         in.close();
     }
-    
+
     /**
      * Gets the number of vertices in the mesh
      */
@@ -109,25 +108,25 @@ public class Mesh {
      * Constructs a normal for each vertex of the mesh
      */
     private Vector3[] computeNormals () {
-	  
+
         normals = new Vector3[vertices.length];
 
-	// Compute per face normals and set the vertex normal to the average normals across faces
+        // Compute per face normals and set the vertex normal to the average normals across faces
         // to the vertex.
         try {
             for (int i = 0; i < 3 * getNumFaces(); i += 3) {
 
 
 
-		/* compléter*/
+                /* compléter*/
 
 
-		Vector3 n = new Vector3(); //?
+                Vector3 n = new Vector3(); //?
 
 
-                
-		// ajoute la normale calculee a chq sommet de la face
-		for (int j = 0; j < 3; j++) { 
+
+                // ajoute la normale calculee a chq sommet de la face
+                for (int j = 0; j < 3; j++) { 
                     Vector nj = normals[faces[i+j]];
 
                     if (nj == null) {
@@ -136,21 +135,21 @@ public class Mesh {
                     } else {
                         nj.add (n);
                     }
-		}
+                }
             }
         } catch (InstantiationException e) { System.out.println ("Should not reach 1"); }
-          catch (SizeMismatchException e) { System.out.println ("Should not reach 2"); }
+        catch (SizeMismatchException e) { System.out.println ("Should not reach 2"); }
 
         // final round of normalization 
-	for (int i = 0; i < normals.length; i++) {
+        for (int i = 0; i < normals.length; i++) {
             if (normals[i] == null) { /* deals with orphans vertices */
                 normals[i] = new Vector3 ("n_orphan");
             } else {
                 normals[i].normalize();
             }
         }
-	  
-	return normals;
+
+        return normals;
     }
 
     /**

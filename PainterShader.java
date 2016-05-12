@@ -1,4 +1,3 @@
-
 import algebra.*;
 import java.awt.*;
 
@@ -8,7 +7,7 @@ import java.awt.*;
  * @author: cdehais
  */
 public class PainterShader extends Shader {
-    
+
     DepthBuffer depth;
 
     public PainterShader (GraphicsWrapper screen) {

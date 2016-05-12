@@ -1,5 +1,3 @@
-
-
 /**
  * The Shader class is responsible for writing final pixel color
  * to the screen (GraphicWrapper), from a Fragment.

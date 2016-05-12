@@ -1,4 +1,3 @@
-
 import java.awt.*;
 import algebra.*;
 
@@ -51,7 +50,7 @@ public class Fragment {
 
         return attr;
     }
-    
+
     public void setAttribute (int index, double value) {
         attributes[index] = value;
     }
@@ -85,7 +84,7 @@ public class Fragment {
         this.x = x;
         this.y = y;
     }
-    
+
     public double getDepth () {
         return attributes[0];
     }
@@ -133,4 +132,4 @@ public class Fragment {
     public String toString () {
         return "(" + x + "," + y + ")";
     }
-}
+    }

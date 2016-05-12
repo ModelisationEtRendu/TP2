@@ -1,4 +1,3 @@
-
 import java.util.*;
 import java.awt.*;
 import java.lang.Math.*;
@@ -76,15 +75,15 @@ public class TestGraphicWrapper {
             }
         }
     }
- 
+
     public static void testChecker () throws Exception {
-   
+
         for (int k = 0; k < 10; k++) {
-   
+
             checker (1, 1.0, 1.0, 1.0);
             screen.swapBuffers ();
             Thread.sleep (100);
-            
+
             checker (0, 1.0, 1.0, 1.0);
             screen.swapBuffers ();
             Thread.sleep (100);
@@ -92,20 +91,20 @@ public class TestGraphicWrapper {
     }
 
     public static void testConway () throws Exception {
-        
+
         screen.clearBuffer ();
         //screen.swapBuffers ();
         //screen.clearBuffer ();
         //screen.swapBuffers ();
         /*
-        for (int y = 0; y < height; y++) {
-            for (int x = 0; x < width; x++) {
-                if (Math.random() < 0.3) {
-                    screen.setPixel (x, y, 255, 255, 255);
-                }
-            }
-        }
-        */
+           for (int y = 0; y < height; y++) {
+           for (int x = 0; x < width; x++) {
+           if (Math.random() < 0.3) {
+           screen.setPixel (x, y, 255, 255, 255);
+           }
+           }
+           }
+         */
         screen.setPixel (20, 10, 255, 255, 255);
         screen.setPixel (21, 11, 255, 255, 255);
         screen.setPixel (19, 12, 255, 255, 255);
@@ -121,7 +120,7 @@ public class TestGraphicWrapper {
             Thread.sleep (30);
         }
 
-  	screen.destroy() ;
+        screen.destroy() ;
         System.exit(0);
     }
 

@@ -1,12 +1,12 @@
+/**
+ * 2D Texture class.
+ */
 
 import java.awt.*;
 import java.awt.image.*;
 import java.io.*;
 import javax.imageio.ImageIO;
 
-/**
- * 2D Texture class.
- */
 public class Texture {
     int width;
     int height;

@@ -1,12 +1,12 @@
-
-import algebra.*;
-import java.awt.*;
-
 /**
  * Simple shader that just copy the interpolated color to the screen,
  * taking the depth of the fragment into acount.
  * @author: cdehais
  */
+
+import algebra.*;
+import java.awt.*;
+
 public class TextureShader extends Shader {
     
     DepthBuffer depth;

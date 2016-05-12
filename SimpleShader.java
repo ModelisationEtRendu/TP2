@@ -1,4 +1,3 @@
-
 import algebra.*;
 import java.awt.*;
 

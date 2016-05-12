@@ -1,9 +1,9 @@
-
-import algebra.*;
-
 /**
  * author: cdehais
  */
+
+import algebra.*;
+
 public class Transformation  {
 
     Matrix worldToCamera;
