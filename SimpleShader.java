@@ -1,10 +1,11 @@
-import algebra.*;
-import java.awt.*;
-
 /**
  * Simple shader that just copy the interpolated color to the screen.
  * @author: cdehais
  */
+
+import algebra.*;
+import java.awt.*;
+
 public class SimpleShader extends Shader {
 
     public SimpleShader (GraphicsWrapper screen) {

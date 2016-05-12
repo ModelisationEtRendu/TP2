@@ -1,12 +1,13 @@
-import algebra.*;
-import java.lang.Math.*;
-
 /**
  * The PerspectiveCorrectRasterizer class extends Rasterizer to perform Persepctive Correct interpolation
  * of attributes.
  *
  * @author cdehais
  */
+
+import algebra.*;
+import java.lang.Math.*;
+
 public class PerspectiveCorrectRasterizer extends Rasterizer {
 
     public PerspectiveCorrectRasterizer (Shader shader) {

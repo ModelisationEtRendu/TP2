@@ -1,7 +1,3 @@
-
-import algebra.*;
-import java.lang.Math.*;
-
 /**
  * The Rasterizer class is responsible for the discretization of geometric primitives
  * (edges and faces) over the screen pixel grid and generates Fragment (pixels with
@@ -10,6 +6,10 @@ import java.lang.Math.*;
  *
  * @author morin, chambon, cdehais
  */
+
+import algebra.*;
+import java.lang.Math.*;
+
 public class Rasterizer {
 
     Shader shader;

@@ -4,13 +4,11 @@
  * @author smondet
  */
 
-
 import java.awt.*;
 import java.awt.geom.*;
 import java.awt.image.*;
 import javax.swing.*;
 import java.lang.Math;
-
 
 class ImageComponent extends Component {
 

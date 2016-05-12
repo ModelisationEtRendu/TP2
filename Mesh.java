@@ -1,11 +1,12 @@
-import java.io.* ;
-import algebra.*;
-
 /**
  * Defines a triangle based mesh.
  * A mesh is constructed by interpretting the data given in an OFF file.
  * @author smondet gg cdehais
  */
+
+import java.io.* ;
+import algebra.*;
+
 public class Mesh {
 
     private Vector[] vertices;

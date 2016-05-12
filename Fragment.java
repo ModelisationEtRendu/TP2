@@ -1,11 +1,11 @@
-import java.awt.*;
-import algebra.*;
-
 /**
  * The Fragment class represents an attributed 'pixel' as generated
  * by a Rasterizer.
  * @author cdehais
  */
+
+import java.awt.*;
+import algebra.*;
 
 public class Fragment {
     private int x;

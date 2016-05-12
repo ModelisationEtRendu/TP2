@@ -1,10 +1,11 @@
-import algebra.*;
-
 /**
  * The Renderer class drives the rendering pipeline: read in a scene, projects
  * the vertices and rasterizes every faces / edges.
  * @author: cdehais
  */
+
+import algebra.*;
+
 public class Renderer {
 
     static Scene scene;

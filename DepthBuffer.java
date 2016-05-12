@@ -1,8 +1,9 @@
-import java.lang.Double;
-
 /**
  * The DepthBuffer class implements a DepthBuffer and its pass test.
  */ 
+
+import java.lang.Double;
+
 public class DepthBuffer {
     private double[] buffer;
     int width;

@@ -1,12 +1,12 @@
-import java.io.*;
-import algebra.*;
-
 /**
  * Class that describes a simple 3D Scene:
  * This description is meant to be read form a scene description file (.scene extension)
  *
  * @author: cdehais based on smondet, gmorin
  */
+
+import java.io.*;
+import algebra.*;
 
 public class Scene {
 
