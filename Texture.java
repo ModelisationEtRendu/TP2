@@ -27,10 +27,9 @@ public class Texture {
      */ 
     public Color sample (double u, double v) {
 
+        int x = (int)Math.round(width * u) % width;
+        int y = (int)Math.round(height * v) % height;
 
-	/* à compléter */
-
-
-        return new Color (0,0,0);
+        return new Color(image.getRGB(x, y));
     }
 }
