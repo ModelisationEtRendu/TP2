@@ -37,24 +37,28 @@ public class DepthBuffer {
      * closest at its position.
      */
     public boolean testFragment (Fragment fragment) {
-        if ((fragment.getX () >= 0) && (fragment.getX () < width) && (fragment.getY () >= 0) && (fragment.getY () < height)) {
+        int x = fragment.getX();
+        int y = fragment.getY();
+        double z = fragment.getAttribute(0);
 
-            /* compléter */
-
-            return false;
-        } else {
-            return false;
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+            if(z < buffer[y * width + x]) {
+                return true;
+            }
         }
+        return false;
     }
 
     /**
      * Writes the fragment depth to the buffer 
      */
     public void writeFragment (Fragment fragment) {
-        if ((fragment.getX () >= 0) && (fragment.getX () < width) && (fragment.getY () >= 0) && (fragment.getY () < height)) {
+        int x = fragment.getX();
+        int y = fragment.getY();
+        double z = fragment.getAttribute(0);
 
-            /* compléter */
-
+        if (x >= 0 && x < width && y >= 0 && y < height) {
+            buffer[y * width + x] = z;
         }
     }
 

@@ -68,7 +68,7 @@ public class Rasterizer {
         int x2 = v2.getX ();
         int y2 = v2.getY ();
 
-        /* For now : just display the vertices*/
+        /* For now : just display the vertices */
         Fragment f = new Fragment (0,0);
         int size = 2;
         for (int i = 0; i < v1.getNumAttributes (); i++) {
@@ -77,7 +77,7 @@ public class Rasterizer {
         for (int i = -size; i <= size ; i++) {
             for (int j = -size; j <= size; j++) {
                 f.setPosition(x1+i,y1+j);
-                shader.shade (f);
+                shader.shade(f);
             }
         }
 
@@ -118,23 +118,23 @@ public class Rasterizer {
         for (int i=1;i<=delta_x;i++) {
             x = x+1; 
             y_courant = y_courant + m;
-            if ((ystep == 1)&&(y_courant < y+0.5)||((ystep == -1) && (y_courant > y -0.5))) {
+            if ((ystep == 1) && (y_courant < y+0.5) || ((ystep == -1) && (y_courant > y -0.5))) {
                 y = y;
             } else {
                 y = y + ystep;
             }	
 
             //envoi du fragment au shader
-            fragment.setPosition (x, y);
+            fragment.setPosition(x, y);
 
-            if (!shader.isClipped (fragment)) {
+            if (!shader.isClipped(fragment)) {
 
                 //interpolation des attributs
-                interpolate2 (v1, v2, fragment);
+                interpolate2(v1, v2, fragment);
                 if (sym) {
-                    swapXAndY (fragment);
+                    swapXAndY(fragment);
                 }
-                shader.shade (fragment);
+                shader.shade(fragment);
             }
         }
 
@@ -149,12 +149,12 @@ public class Rasterizer {
     static protected Matrix makeBarycentricCoordsMatrix (Fragment v1, Fragment v2, Fragment v3) {
         Matrix C = null;
         try {
-            C = new Matrix (3, 3);
+            C = new Matrix(3, 3);
         } catch (InstantiationException e) {
             /* unreached */
         }
 
-        double area = triangleArea (v1, v2, v3);
+        double area = triangleArea(v1, v2, v3);
         int x1 = v1.getX ();
         int y1 = v1.getY ();
         int x2 = v2.getX ();
@@ -180,10 +180,44 @@ public class Rasterizer {
     public void rasterizeFace (Fragment v1, Fragment v2, Fragment v3) {
 
         Matrix C = makeBarycentricCoordsMatrix (v1, v2, v3);
+        Fragment f = new Fragment(0, 0);
 
-        /* iterate over the triangle's bounding box */
+        try {
+            // Compute triangle's bounding box
+            int x1 = v1.getPosition()[0];
+            int x2 = v2.getPosition()[0];
+            int x3 = v3.getPosition()[0];
+            int y1 = v1.getPosition()[1];
+            int y2 = v2.getPosition()[1];
+            int y3 = v3.getPosition()[1];
+            int x_min = Math.min(Math.min(x1, x2), x3);
+            int x_max = Math.max(Math.max(x1, x2), x3);
+            int y_min = Math.min(Math.min(y1, y2), y3);
+            int y_max = Math.max(Math.max(y1, y2), y3);
 
-        /* à compléter */
+            // Get Fragment's attributes
+            double[] att1 = v1.getAttribute(0, 9);                  
+            double[] att2 = v2.getAttribute(0, 9);                  
+            double[] att3 = v3.getAttribute(0, 9);                  
 
+            // iterate over the triangle's bounding box
+            for(int x = x_min; x <= x_max; x++) {
+                for(int y = y_min; y <= y_max; y++) {
+                    Vector p = C.multiply(new Vector3(1, x, y));
+                    double a = p.get(0);
+                    double b = p.get(1);
+                    double c = p.get(2);
+					
+                    if(a >= 0 && b >= 0 && c >= 0) {
+                        f.setPosition(x, y);
+                        for(int i = 0; i < 9; i++) {
+                            f.setAttribute(i, a * att1[i] + b * att2[i] + c * att3[i]);
+                        }
+                        shader.shade(f);
+                    }
+                }
+            }
+        }
+        catch(Exception e) { /* unreached */ }
     }  
 }
